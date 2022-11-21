@@ -1,0 +1,14 @@
+<h1>hey {{user.username}}</h1>
+<h1> {{user.role}}</h1>
+
+
+{{#if isPresident}}
+<a href="/eventos/crear" class="btn btn-primary"> Crear Evento</a>
+{{/if}}
+
+{{#if isManager}}
+<a href="/eventos/crear" class="btn btn-primary"> Crear Evento</a>
+{{/if}}
+
+<a href="/" class="btn btn-primary">Volver a Inicio</a>
+ 
