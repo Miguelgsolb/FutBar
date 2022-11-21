@@ -6,7 +6,8 @@ const eventSchema = new Schema(
     address: { type: String },
     eventName:{type:String},
     description: { type: String },
- /*    date:Date */
+    /*    date:Date */
+     owner: { type: Schema.Types.ObjectId, ref: 'User' }
 
   },
   {

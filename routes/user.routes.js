@@ -12,8 +12,8 @@ router.get('/perfil' ,isLoggedIn, (req, res, next) => {
     .then((user) => {
         res.render("users/profile", {
           user,
-          isPresident: req.session.currentUser.role === "PRESIDENTE",
-          isManager: req.session.currentUser.role === "ENTRENADOR"
+          isPresident: req.session.currentUser.role === "PRESIDENT",
+          isManager: req.session.currentUser.role === "MANAGER"
          /*  isCurrentUser: (req.session.currentUser._id = "user_id") */
         })
       })
