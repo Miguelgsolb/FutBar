@@ -9,10 +9,10 @@
 
             <form action="/registro" method="POST">
 
-            <div class="mb-3">
-                <label for="username" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="username" name="username">
-            </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                </div>
                 <div class="mb-3">
                     <label for="emailInput" class="form-label">Dirección de email</label>
                     <input type="email" class="form-control" id="emailInput" name="email">
@@ -28,20 +28,20 @@
                 </div>
 
                 <div class="mb-3">
-                
-                    <select name="role">
-                        <option value="JUGADOR">Jugador</option>
-                        <option value="ENTRENADOR">Entrenador</option>
-                    </select>
-                
-                    <button type="submit" class="btn btn-light">Submit</button>
-                    </form>
 
-                {{#if errorMessage}}
-                <div id="errorMessage">
-                    <p>{{errorMessage}}</p>
-                </div>
-                {{/if}}
+                    <select name="role">
+                        <option value="PLAYER">Jugador</option>
+                        <option value="MANAGER">Entrenador</option>
+                    </select>
+
+                    <button type="submit" class="btn btn-light">Submit</button>
+            </form>
+
+            {{#if errorMessage}}
+            <div id="errorMessage">
+                <p>{{errorMessage}}</p>
+            </div>
+            {{/if}}
 
             </form>
         </div>
