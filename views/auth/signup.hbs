@@ -22,11 +22,6 @@
                     <label for="pwdInput" class="form-label">Contraseña</label>
                     <input type="password" class="form-control" id="pwdInput" name="userPwd">
                 </div>
-
-                <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-dark block">Registrarse</button>
-                </div>
-
                 <div class="mb-3">
 
                     <select name="role">
@@ -34,7 +29,16 @@
                         <option value="MANAGER">Entrenador</option>
                     </select>
 
-                    <button type="submit" class="btn btn-light">Submit</button>
+                    {{!-- <button type="submit" class="btn btn-light">Submit</button> --}}
+                </div>
+
+
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-dark block">Registrarse</button>
+                </div>
+
+
             </form>
 
             {{#if errorMessage}}
