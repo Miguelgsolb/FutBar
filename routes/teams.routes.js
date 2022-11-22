@@ -18,8 +18,8 @@ router.get("/equipos", (req, res, next) => {
 
 
 
-/* router.get("/equipos/detalles", (req, res, next) => {
-  res.render("teams/team-details")
-}) */
+
+
+
 
 module.exports = router
