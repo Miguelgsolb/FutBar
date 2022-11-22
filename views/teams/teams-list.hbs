@@ -1,16 +1,12 @@
-<h1>Equipos de La Liga</h1>
-
 <div class="container mt-5">
-    <div class="row">
+    <h1>Equipos de La Liga</h1>
+    <div class="row mt-5">
         {{#each team}}
         <div class="col-md-3">
             <article class="teams-card mb-5">
-                <h4>{{fullName}}</h4>
-
+                <h4 class="text-center">{{fullName}}</h4>
                 <hr>
-                <p>XXXXXX: </p>
-                <p>XXXXXX: </p>
-                <p>XXXXXX: </p>
+                <img src="{{shield_png}}" alt="logo">
             </article>
         </div>
         {{/each}}

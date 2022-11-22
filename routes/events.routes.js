@@ -1,5 +1,5 @@
 const express = require('express')
-const { isLoggedIn, checkRoles } = require('../middleware/route-guard')
+const { isLoggedIn } = require('../middleware/route-guard')
 const router = express.Router()
 const Event = require('./../models/Event.model')
 
@@ -35,5 +35,44 @@ router.post("/eventos/crear", isLoggedIn, (req, res, next) => {
 
 
 
+//-----
+router.get("/eventos/editar/:event_id", isLoggedIn, (req, res, next) => {
+
+  const { event_id } = req.params
+
+  Event
+    .findById(event_id)
+    .then(event => {
+      res.render('events/edit-event', event)
+    })
+    .catch(err => console.log(err))
+})
+
+
+router.post("/eventos/editar/:event_id", isLoggedIn, (req, res, next) => {
+
+  const { name, address, eventName, description, date } = req.body
+  const { event_id } = req.params
+
+  Event
+    .findByIdAndUpdate(event_id, { name, address, eventName, description, date })
+    .then(() => {
+      res.redirect(`/eventos`)
+    })
+    .catch((err) => console.log(err))
+})
+
+//----
+
+router.post('/eventos/eliminar/:event_id', (req, res) => {
+
+  const { event_id } = req.params
+
+  Event
+    .findByIdAndDelete(event_id)
+    .then(() => res.redirect('/eventos'))
+    .catch(err => console.log(err))
+
+})
 
 module.exports = router
