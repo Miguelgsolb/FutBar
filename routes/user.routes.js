@@ -1,8 +1,6 @@
 const express = require('express')
 const router = express.Router()
-
 const Event = require("../models/Event.model")
-const User = require("../models/User.model")
 const { isLoggedIn } = require('../middleware/route-guard')
 
 router.get('/perfil', isLoggedIn, (req, res) => {
@@ -21,5 +19,8 @@ router.get('/perfil', isLoggedIn, (req, res) => {
 })
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> bd9bf986c5cdd909a500ecea11846cfbc647709e
 module.exports = router

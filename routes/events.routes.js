@@ -41,7 +41,6 @@ router.post("/eventos/crear", isLoggedIn, (req, res, next) => {
 
 
 
-//-----
 router.get("/eventos/editar/:event_id", isLoggedIn, (req, res, next) => {
 
   const { event_id } = req.params
@@ -68,7 +67,7 @@ router.post("/eventos/editar/:event_id", isLoggedIn, (req, res, next) => {
     .catch((err) => console.log(err))
 })
 
-//----
+
 
 
 router.post('/eventos/eliminar/:event_id', (req, res) => {
