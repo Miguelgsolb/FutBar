@@ -6,7 +6,7 @@ const teamsApi = require("./../services/teams-api.service")
 const api = new teamsApi()
 
 router.get("/equipos", (req, res, next) => {
-  /*  res.render("teams/team-list") */
+
   api
     .getAllTeams()
     .then(response => {
