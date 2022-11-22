@@ -12,7 +12,10 @@ const eventSchema = new Schema(
       type: mongoose.Types.ObjectId,
       ref: 'User'
     },
-
+    participant: {
+      type: mongoose.Types.ObjectId,
+      ref: 'User'
+    }
   },
   {
     timestamps: true,

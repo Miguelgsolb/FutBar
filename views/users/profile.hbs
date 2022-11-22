@@ -13,5 +13,14 @@
 
 {{#each userEvents}}
 <p>{{name}}</p>
+
+<a href="/eventos/editar/{{id}}" class="btn btn-dark">Editar</a>
+
+<form action="/eventos/eliminar/{{id}}" method="POST" style="display: inline">
+    <input type="submit" value="Eliminar" class="btn btn-danger">
+</form>
+
+
 {{/each}}
+<hr>
 <a href="/" class="btn btn-primary">Volver a Inicio</a>

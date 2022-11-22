@@ -4,22 +4,53 @@ const router = express.Router()
 const Event = require('./../models/Event.model')
 
 
-router.get('/eventos', isLoggedIn, (req, res) => {
+router.get('/eventos', isLoggedIn, (req, res, next) => {
 
   Event
     .find()
     .then(userEvents => {
+      const updateEvent = userEvents.map((event) => {
+        if (event.owner.toString() === req.session.currentUser._id) {
+          event.isCurrentUser = true
+        } else {
+          event.isCurrentUser = false
+        }
+        return event
+      })
       res.render('events/events-list', {
         user: req.session.currentUser,
         isPresident: req.session.currentUser.role === "PRESIDENT",
         isManager: req.session.currentUser.role === "MANAGER",
-        userEvents
+        userEvents: updateEvent
       })
     })
     .catch(err => console.log(err))
 })
+//--------------------------------------------------------------------------------
+// router.get('/eventos/participar/:event_id', isLoggedIn, (req, res, next) => {
 
+//   const { event_id } = req.params
 
+//   Event
+//     .findById(event_id)
+//     .then(event => {
+//       res.render('/eventos', event)
+//     })
+//     .catch(err => console.log(err))
+// })
+
+// router.get('/eventos/participar/:event_id', isLoggedIn, (req, res, next) => {
+
+//   const { event_id } = req.params
+
+//   Event
+//     .findByIdAndUpdate(event_id, { $push: { participant: req.session.currentUser._id } })
+//     .then(event => {
+//       res.redirect('/eventos')
+//     })
+//     .catch(err => console.log(err))
+// })
+//-------------------------------------------------------------------------------------
 
 router.get("/eventos/crear", isLoggedIn, (req, res, next) => {
   res.render("events/create-event")
@@ -38,7 +69,6 @@ router.post("/eventos/crear", isLoggedIn, (req, res, next) => {
     })
     .catch((err) => console.log(err))
 })
-
 
 
 router.get("/eventos/editar/:event_id", isLoggedIn, (req, res, next) => {
@@ -76,7 +106,7 @@ router.post('/eventos/eliminar/:event_id', (req, res) => {
 
   Event
     .findByIdAndDelete(event_id)
-    .then(() => res.redirect('/eventos'))
+    .then(() => res.redirect('/perfil'))
     .catch(err => console.log(err))
 
 })

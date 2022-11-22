@@ -18,9 +18,38 @@ router.get('/perfil', isLoggedIn, (req, res) => {
     .catch(err => console.log(err))
 })
 
+// router.get('/perfil', isLoggedIn, (req, res, next) => {
+//   const currentUser = req.session.currentUser;
+//   const isPresident = currentUser.role === "PRESIDENT";
+//   const isManager = currentUser.role === "MANAGER";
+//   if (isPresident || isManager) {
+//     Event
+//       .find({ owner: currentUser._id })
+//       .then(userEvents => {
+//         res.render('users/profile', {
+//           user: currentUser,
+//           isPresident,
+//           isManager,
+//           userEvents
+//         })
+//       })
+//       .catch(err => console.log(err))
+//   } else {
+//     Event
+//       .find({ participants: currentUser })
+//       .then((userEvents) => {
+//         console.log(userEvents);
+//         res.render('users/profile', {
+//           user: currentUser,
+//           isPresident,
+//           isManager,
+//           userEvents
+//         })
+//       })
+//       .catch(err => console.log(err))
+//   }
+// })
 
-<<<<<<< HEAD
 
-=======
->>>>>>> bd9bf986c5cdd909a500ecea11846cfbc647709e
+
 module.exports = router
