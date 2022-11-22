@@ -5,7 +5,7 @@ const router = express.Router()
 const teamsApi = require("./../services/teams-api.service")
 const api = new teamsApi()
 
-router.get("/equipos", (req, res, next) => {
+router.get("/", (req, res, next) => {
 
   api
     .getAllTeams()

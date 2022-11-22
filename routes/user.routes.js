@@ -3,7 +3,7 @@ const router = express.Router()
 const Event = require("../models/Event.model")
 const { isLoggedIn } = require('../middleware/route-guard')
 
-router.get('/perfil', isLoggedIn, (req, res) => {
+router.get('/', isLoggedIn, (req, res) => {
 
   Event
     .find({ owner: req.session.currentUser._id })

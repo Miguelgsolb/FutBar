@@ -4,7 +4,7 @@ const teamsApi = require("./../services/teams-api.service")
 const api = new teamsApi()
 
 
-router.get("/plantilla/:squad_id", (req, res, next) => {
+router.get("/:squad_id", (req, res, next) => {
 
     const { squad_id } = req.params
 
@@ -18,7 +18,7 @@ router.get("/plantilla/:squad_id", (req, res, next) => {
 })
 
 
-router.get("/plantilla/detalle/:squad_id/:player_id", (req, res, next) => {
+router.get("/detalle/:squad_id/:player_id", (req, res, next) => {
 
     const { squad_id, player_id } = req.params
 
@@ -32,7 +32,7 @@ router.get("/plantilla/detalle/:squad_id/:player_id", (req, res, next) => {
 
             })
 
-            res.render('players/players-details', { player: player_details, squad_id })
+            res.render('players/players-details', player_details[0])
         })
         .catch(err => console.log(err))
 

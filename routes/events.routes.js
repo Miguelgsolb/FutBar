@@ -4,7 +4,7 @@ const router = express.Router()
 const Event = require('./../models/Event.model')
 
 
-router.get('/eventos', isLoggedIn, (req, res, next) => {
+router.get('/', isLoggedIn, (req, res) => {
 
   Event
     .find()
@@ -52,12 +52,13 @@ router.get('/eventos', isLoggedIn, (req, res, next) => {
 // })
 //-------------------------------------------------------------------------------------
 
-router.get("/eventos/crear", isLoggedIn, (req, res, next) => {
+
+router.get("/crear", isLoggedIn, (req, res, next) => {
   res.render("events/create-event")
 })
 
 
-router.post("/eventos/crear", isLoggedIn, (req, res, next) => {
+router.post("/crear", isLoggedIn, (req, res, next) => {
 
   const { name, address, eventName, description, date } = req.body
   const owner = req.session.currentUser._id
@@ -71,7 +72,7 @@ router.post("/eventos/crear", isLoggedIn, (req, res, next) => {
 })
 
 
-router.get("/eventos/editar/:event_id", isLoggedIn, (req, res, next) => {
+router.get("/editar/:event_id", isLoggedIn, (req, res, next) => {
 
   const { event_id } = req.params
 
@@ -84,7 +85,7 @@ router.get("/eventos/editar/:event_id", isLoggedIn, (req, res, next) => {
 })
 
 
-router.post("/eventos/editar/:event_id", isLoggedIn, (req, res, next) => {
+router.post("/editar/:event_id", isLoggedIn, (req, res, next) => {
 
   const { name, address, eventName, description, date } = req.body
   const { event_id } = req.params
@@ -98,9 +99,7 @@ router.post("/eventos/editar/:event_id", isLoggedIn, (req, res, next) => {
 })
 
 
-
-
-router.post('/eventos/eliminar/:event_id', (req, res) => {
+router.post('/eliminar/:event_id', (req, res) => {
 
   const { event_id } = req.params
 
