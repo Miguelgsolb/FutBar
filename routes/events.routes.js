@@ -4,15 +4,21 @@ const router = express.Router()
 const Event = require('./../models/Event.model')
 
 
-router.get("/eventos", isLoggedIn, (req, res, next) => {
+router.get('/eventos', isLoggedIn, (req, res) => {
 
   Event
     .find()
-    .then(event => {
-      res.render("events/events-list", { event })
+    .then(userEvents => {
+      res.render('events/events-list', {
+        user: req.session.currentUser,
+        isPresident: req.session.currentUser.role === "PRESIDENT",
+        isManager: req.session.currentUser.role === "MANAGER",
+        userEvents
+      })
     })
-    .catch((err) => console.log(err))
+    .catch(err => console.log(err))
 })
+
 
 
 router.get("/eventos/crear", isLoggedIn, (req, res, next) => {
@@ -63,6 +69,7 @@ router.post("/eventos/editar/:event_id", isLoggedIn, (req, res, next) => {
 })
 
 //----
+
 
 router.post('/eventos/eliminar/:event_id', (req, res) => {
 

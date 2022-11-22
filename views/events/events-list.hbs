@@ -1,18 +1,28 @@
 <h1>Lista de Eventos</h1>
 
-{{#each event}}
+{{#each userEvents}}
 
 <p>{{name}}</p>
 <p>{{date}}</p>
 
 
-<a href="/eventos" class="btn btn-primary">Unirse</a>
+<form action="/eventos/{{id}}/participar" method="POST" class="btn btn-primary">Unirse</form>
 
-
+{{#if @root.isPresident}}
 <a href="/eventos/editar/{{id}}" class="btn btn-dark">Editar</a>
 
 <form action="/eventos/eliminar/{{id}}" method="POST" style="display: inline">
     <input type="submit" value="Eliminar" class="btn btn-danger">
 </form>
+{{/if}}
+
+{{#if @root.isManager}}
+<a href="/eventos/editar/{{id}}" class="btn btn-dark">Editar</a>
+
+<form action="/eventos/eliminar/{{id}}" method="POST" style="display: inline">
+    <input type="submit" value="Eliminar" class="btn btn-danger">
+</form>
+{{/if}}
+
 
 {{/each}}

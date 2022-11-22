@@ -5,8 +5,9 @@ const saltRounds = 10
 
 const { isLoggedOut } = require('../middleware/route-guard')
 
-// Signup
+
 router.get('/registro', (req, res, next) => res.render('auth/signup'))
+
 router.post('/registro', (req, res, next) => {
 
   const { userPwd } = req.body
@@ -20,9 +21,8 @@ router.post('/registro', (req, res, next) => {
 })
 
 
-
-// Login
 router.get('/iniciar-sesion', (req, res, next) => res.render('auth/login'))
+
 router.post('/iniciar-sesion', (req, res, next) => {
 
   const { email, userPwd } = req.body
@@ -45,7 +45,6 @@ router.post('/iniciar-sesion', (req, res, next) => {
 })
 
 
-// Logout
 router.get('/cerrar-sesion', (req, res, next) => {
   req.session.destroy(() => res.redirect('/iniciar-sesion'))
 })
