@@ -24,13 +24,28 @@ class teamsApi {
     return this.axiosApp.get(`/api.php`, { params })
   }
 
+
+  getPlayersByTeam = (team) => {
+    const params = {
+      key: process.env.API_KEY,
+      tz: 'Europe/Madrid',
+      format: 'json',
+      req: 'team_players',
+      team: '',
+      year: '2022'
+    }
+
+    return this.axiosApp.get(`/api.php`, { params })
+  }
+
+  "id_comp"
+
+
   /*  getOneTeam = (teamId) => {
      return this.axiosApp.get(`/characters/${teamId}`)
     }
  
-    getAllPlayers = () => {
-     return this.axiosApp.get("/characters")
-   }
+
  
     getOnePlayer = (playerId) => {
       return this.axiosApp.get(`/characters/${playerId}`)
