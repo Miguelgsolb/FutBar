@@ -1,16 +1,26 @@
 <div class="container mt-5">
-    <h1>Detalles</h1>
-    <div class="row mt-5">
+    <h1></h1>
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <div class="col-md-6 a-box">
+            <div class="img-container">
+                <div class="img-inner">
+                    <div class="inner-skew">
+                        <img src="{{image}}">
+                    </div>
+                </div>
+            </div>
+            <div class="text-container">
 
-        <div class="col-md-3">
-            <article class="teams-card mb-5">
-                <h4 class="text-center">{{name}}</h4>
+                <h2>{{name}} {{last_name}}</h2>
                 <hr>
-                <img src="{{image}}" alt="logo">
-            </article>
-            <a href="/plantilla/detalle/{{id}}" class="btn btn-dark">Detalle</a>
-            <a href="/equipos" class="btn btn-dark">Equipos</a>
+                <div class="text-start">
+                    <p>posición:{{pos}}</p>
+                    <p>número:{{squadNumber}}</p>
+                    <p>goles:{{goals}}</p>
+                    <p>tarjetas rojas:{{reds}}</p>
+                    <p>tarjetas amarillas:{{yellows}}</p>
+                </div>
+                <a href="/equipos" class="btn btn-dark">Equipos</a>
+            </div>
         </div>
-
     </div>
-</div>

@@ -1,33 +1,39 @@
-<div class="container bg-success p-2 text-dark bg-opacity-75">
-    <div class="row mt-5 text-white">
-        {{#each player}}
-        <div class="col-md-3">
-            <h1 class="text-center text-white">{{nick}}</h1>
+<div class="container mt-5">
+    <h1>Plantilla</h1>
+    <div class="row mt-5 text-center">
 
-            <div class="card" style="width: 18rem;">
-                <a href="/plantilla/detalle/{{../squad_id}}/{{id}}"><img src="{{image}}" class="card-img-top"
-                        alt="player"></a>
-                <div class="card-body">
+        <div class="card" style="width: 18rem;">
+            <a href="/plantilla/detalle/{{../squad_id}}/{{id}}"><img src="{{image}}" class="card-img-top"
+                    alt="player"></a>
+            <div class="card-body">
 
-                </div>
             </div>
         </div>
-        {{/each}}
     </div>
+    {{/each}}
+</div>
 </div>
 {{!-- <div class="container bg-success p-2 text-dark bg-opacity-75">
     <div class="row mt-5 text-white text-center">
         <h1>Plantilla</h1>
         <hr>
         {{#each player}}
-        <div class="col-md-3">
-            <article class="teams-card mb-5">
-                <h4 class="text-center">{{name}}</h4>
-                <hr>
-                <img src="{{image}}" alt="logo">
-            </article>
-            <a href="/plantilla/detalle/{{../squad_id}}/{{id}}" class="btn btn-dark">Detalle</a>
-            <a href="/equipos" class="btn btn-dark">Equipos</a>
+
+        <div class="col-md-3 a-box">
+            <div class="img-container">
+                <div class="img-inner">
+                    <div class="inner-skew">
+                        <a href="/plantilla/detalle/{{../squad_id}}/{{id}}">
+                            <img src="{{image}}"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-container">
+                <h3>{{nick}}</h3>
+                <div>
+
+                </div>
+            </div>
         </div>
         {{/each}}
     </div>
