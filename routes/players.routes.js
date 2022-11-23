@@ -14,7 +14,7 @@ router.get("/:squad_id", (req, res, next) => {
             const { player } = response.data
             res.render('players/players-list', { player, squad_id })
         })
-        .catch(err => console.log(err))
+        .catch(error => next(error))
 })
 
 
@@ -34,7 +34,7 @@ router.get("/detalle/:squad_id/:player_id", (req, res, next) => {
 
             res.render('players/players-details', player_details[0])
         })
-        .catch(err => console.log(err))
+        .catch(error => next(error))
 
 })
 

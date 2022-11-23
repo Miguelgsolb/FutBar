@@ -15,7 +15,7 @@ router.get('/', isLoggedIn, (req, res) => {
         userEvents
       })
     })
-    .catch(err => console.log(err))
+    .catch(error => next(error))
 })
 
 

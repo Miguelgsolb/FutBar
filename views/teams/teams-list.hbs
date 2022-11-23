@@ -1,14 +1,15 @@
-<div class="container mt-5 ">
-    <h1>Equipos de La Liga</h1>
-    <div class="row mt-5">
+<div class="container">
+    <h1 class="text-center mt-5">Equipos de La Liga</h1>
+    <hr>
+    <div class="row mt-5 text-white text-center">
         {{#each team}}
         <div class="col-md-3">
-            <article class="teams-card mb-5">
-                <h4 class="text-center">{{fullName}}</h4>
-                <hr>
-                <img src="{{shield_png}}" alt="logo">
+            <article class="teams-card mb-5 text-white">
+                {{!-- <h4 class="text-center">{{fullName}}</h4>
+                <hr> --}}
+                <a href="/plantilla/{{id_comp}}"> <img class="shadow-lg p-3 mb-5 bg-body rounded" src="{{shield_png}}"
+                        alt="logo"></a>
             </article>
-            <a href="/plantilla/{{id_comp}}" class="btn btn-dark">plantilla</a>
         </div>
         {{/each}}
     </div>

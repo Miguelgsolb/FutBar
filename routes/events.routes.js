@@ -4,7 +4,7 @@ const router = express.Router()
 const Event = require('./../models/Event.model')
 
 
-router.get('/', isLoggedIn, (req, res) => {
+router.get('/', isLoggedIn, (req, res, next) => {
 
   Event
     .find()
@@ -24,7 +24,7 @@ router.get('/', isLoggedIn, (req, res) => {
         userEvents: updateEvent
       })
     })
-    .catch(err => console.log(err))
+    .catch(error => next(error))
 })
 
 
@@ -37,7 +37,7 @@ router.post('/participar/:event_id', isLoggedIn, (req, res, next) => {
     .then(event => {
       res.redirect('/eventos')
     })
-    .catch(err => console.log(err))
+    .catch(error => next(error))
 })
 
 
@@ -56,7 +56,7 @@ router.post("/crear", isLoggedIn, (req, res, next) => {
     .then(() => {
       res.redirect('/eventos')
     })
-    .catch((err) => console.log(err))
+    .catch((error) => next(error))
 })
 
 
@@ -69,7 +69,7 @@ router.get("/editar/:event_id", isLoggedIn, (req, res, next) => {
     .then(event => {
       res.render('events/edit-event', event)
     })
-    .catch(err => console.log(err))
+    .catch(error => next(error))
 })
 
 
@@ -83,7 +83,7 @@ router.post("/editar/:event_id", isLoggedIn, (req, res, next) => {
     .then(() => {
       res.redirect(`/eventos`)
     })
-    .catch((err) => console.log(err))
+    .catch((error) => next(error))
 })
 
 
@@ -94,7 +94,7 @@ router.post('/eliminar/:event_id', (req, res) => {
   Event
     .findByIdAndDelete(event_id)
     .then(() => res.redirect('/perfil'))
-    .catch(err => console.log(err))
+    .catch(error => next(error))
 
 })
 

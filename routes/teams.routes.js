@@ -13,7 +13,7 @@ router.get("/", (req, res, next) => {
       console.log('-----', response.data)
       res.render('teams/teams-list', response.data)
     })
-    .catch(err => console.log(err))
+    .catch(error => next(error))
 })
 
 

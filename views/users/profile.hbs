@@ -1,30 +1,43 @@
 <div class='container'>
+    <div class="row justify-content-left">
+        <div class="col-md-6">
 
-    <h1>hey {{user.username}}</h1>
-    <h1> {{user.role}}</h1>
-
-
-    {{#if isPresident}}
-    <a href="/eventos/crear" class="btn btn-primary"> Crear Evento</a>
-    {{/if}}
-
-    {{#if isManager}}
-    <a href="/eventos/crear" class="btn btn-primary"> Crear Evento</a>
-    {{/if}}
+            <h1>hey {{user.username}}</h1>
+            <h1> {{user.role}}</h1>
 
 
-    {{#each userEvents}}
-    <p>{{name}}</p>
+            {{#if isPresident}}
+            <a href="/eventos/crear" class="btn btn-primary"> Crear Evento</a>
+            {{/if}}
 
-    <a href="/eventos/editar/{{id}}" class="btn btn-dark">Editar</a>
-
-    <form action="/eventos/eliminar/{{id}}" method="POST" style="display: inline">
-        <input type="submit" value="Eliminar" class="btn btn-danger">
-    </form>
+            {{#if isManager}}
+            <a href="/eventos/crear" class="btn btn-primary"> Crear Evento</a>
+            {{/if}}
 
 
-    {{/each}}
-    <hr>
-    <a href="/" class="btn btn-primary">Volver a Inicio</a>
+            {{#each userEvents}}
+            <p>{{name}}</p>
 
+            <a href="/eventos/editar/{{id}}" class="btn btn-dark">Editar</a>
+
+            <form action="/eventos/eliminar/{{id}}" method="POST" style="display: inline">
+                <input type="submit" value="Eliminar" class="btn btn-danger">
+            </form>
+
+
+            {{/each}}
+            <hr>
+            <a href="/" class="btn btn-primary">Volver a Inicio</a>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-right">
+            <div class="col-md-6">
+                <h1>Mis Eventos</h1>
+            </div>
+        </div>
+
+    </div>
 </div>

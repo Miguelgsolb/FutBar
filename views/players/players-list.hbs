@@ -1,7 +1,24 @@
-<div class="container mt-5">
-    <h1>Plantilla</h1>
-    <div class="row mt-5">
+<div class="container bg-success p-2 text-dark bg-opacity-75">
+    <div class="row mt-5 text-white">
+        {{#each player}}
+        <div class="col-md-3">
+            <h1 class="text-center text-white">{{nick}}</h1>
 
+            <div class="card" style="width: 18rem;">
+                <a href="/plantilla/detalle/{{../squad_id}}/{{id}}"><img src="{{image}}" class="card-img-top"
+                        alt="player"></a>
+                <div class="card-body">
+
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+{{!-- <div class="container bg-success p-2 text-dark bg-opacity-75">
+    <div class="row mt-5 text-white text-center">
+        <h1>Plantilla</h1>
+        <hr>
         {{#each player}}
         <div class="col-md-3">
             <article class="teams-card mb-5">
@@ -13,6 +30,5 @@
             <a href="/equipos" class="btn btn-dark">Equipos</a>
         </div>
         {{/each}}
-
     </div>
-</div>
+</div> --}}
