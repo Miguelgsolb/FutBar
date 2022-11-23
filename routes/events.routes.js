@@ -26,31 +26,19 @@ router.get('/', isLoggedIn, (req, res) => {
     })
     .catch(err => console.log(err))
 })
-//--------------------------------------------------------------------------------
-// router.get('/eventos/participar/:event_id', isLoggedIn, (req, res, next) => {
 
-//   const { event_id } = req.params
 
-//   Event
-//     .findById(event_id)
-//     .then(event => {
-//       res.render('/eventos', event)
-//     })
-//     .catch(err => console.log(err))
-// })
+router.post('/participar/:event_id', isLoggedIn, (req, res, next) => {
 
-// router.get('/eventos/participar/:event_id', isLoggedIn, (req, res, next) => {
+  const { event_id } = req.params
 
-//   const { event_id } = req.params
-
-//   Event
-//     .findByIdAndUpdate(event_id, { $push: { participant: req.session.currentUser._id } })
-//     .then(event => {
-//       res.redirect('/eventos')
-//     })
-//     .catch(err => console.log(err))
-// })
-//-------------------------------------------------------------------------------------
+  Event
+    .findByIdAndUpdate(event_id, { $addToSet: { participants: req.session.currentUser._id } })
+    .then(event => {
+      res.redirect('/eventos')
+    })
+    .catch(err => console.log(err))
+})
 
 
 router.get("/crear", isLoggedIn, (req, res, next) => {

@@ -6,7 +6,9 @@
 <p>{{date}}</p>
 
 
-<form action="/eventos/participar/{{id}}" method="POST" class="btn btn-primary">Unirse</form>
+<form action="/eventos/participar/{{id}}" method="POST">
+    <input type="submit" value="Participar" class="btn btn-primary">
+</form>
 
 {{#if ../isPresident}}
 <a href="/eventos/editar/{{id}}" class="btn btn-dark">Editar</a>
