@@ -32,8 +32,21 @@ router.post("/crear/:event_id", isLoggedIn, (req, res, next) => {
             return Event.findByIdAndUpdate(event_id, { $addToSet: { comments: comment._id } })
         })
         .then(() => {
-            res.redirect('/eventos/detalle')
+            res.redirect(`/eventos/detalle/${event_id}`)
         })
+        .catch((error) => next(error))
+})
+
+router.post("/borrar/:comment_id", isLoggedIn, (req, res, next) => {
+
+    const { comment_id } = req.params
+
+    Comments
+
+        .findByIdAndDelete(comment_id)
+
+        .then(() =>
+            res.redirect(`/perfil`))
         .catch((error) => next(error))
 })
 

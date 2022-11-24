@@ -117,7 +117,12 @@ router.get("/detalle/:event_id", (req, res, next) => {
 
   Event
     .findById(event_id)
-    .populate('comments')
+    .populate({
+      path: 'comments', populate: {
+        path: 'owner',
+        select: 'username'
+      }
+    })
     .then(userComments => {
       res.render('events/eventos-details', userComments)
     })
