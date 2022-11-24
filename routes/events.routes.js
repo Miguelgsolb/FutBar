@@ -4,6 +4,7 @@ const router = express.Router()
 const Event = require('./../models/Event.model')
 const uploader = require('./../config/uploader.config')
 
+
 router.get('/', isLoggedIn, (req, res, next) => {
 
   Event
