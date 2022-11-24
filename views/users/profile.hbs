@@ -1,4 +1,4 @@
-<div class='container'>
+{{!-- <div class='container'>
     <div class="row justify-content-left">
         <div class="col-md-6">
 
@@ -51,5 +51,55 @@
             </div>
         </div>
 
+    </div>
+</div> --}}
+
+<div class="container mt-5">
+    <h1 class="mt-4">Hola, {{user.username}}</h1>
+    <hr>
+    <div class="row text-center mt-4">
+        <div class="col">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        Perfil
+                        {{#if isPresident}}
+                        <a href="/eventos/crear" class="btn btn-primary"> Crear Evento</a>
+                        {{/if}}
+
+                        {{#if isManager}}
+                        <a href="/eventos/crear" class="btn btn-primary"> Crear Evento</a>
+                        {{/if}}
+
+
+                        {{#each userEvents}}
+                        <p>{{name}}</p>
+
+                        <a href="/eventos/editar/{{id}}" class="btn btn-dark">Editar</a>
+
+                        <form action="/eventos/eliminar/{{id}}" method="POST" style="display: inline">
+                            <input type="submit" value="Eliminar" class="btn btn-danger">
+                        </form>
+                        {{/each}}
+                    </div>
+
+                    <div class="col-sm">
+                        Eventos
+                        <div>
+                            {{#each joinEvents}}
+                            <p>{{name}}</p>
+
+                            <form action="/perfil/eliminar/{{id}}" method="POST" style="display: inline">
+                                <input type="submit" value="desapuntar" class="btn btn-danger">
+                            </form>
+
+                            {{/each}}
+                        </div>
+                        <hr>
+                        <a href="/" class="btn btn-primary">Volver a Inicio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

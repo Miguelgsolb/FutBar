@@ -1,4 +1,4 @@
-<h1>Lista de Eventos</h1>
+{{!-- <h1>Lista de Eventos</h1>
 
 {{#each userEvents}}
 
@@ -18,4 +18,46 @@
 </form>
 {{/if}}
 
-{{/each}}
+{{/each}} --}}
+
+<div class="container mb-4">
+    <h1 class="text-center mt-5">Lista de Eventos</h1>
+    <hr>
+    <div class="row mt-4 text-center">
+        {{#each userEvents}}
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem;">
+                <img src="./images/field.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h2 class="card-title">{{name}}</h2>
+                    <hr>
+                    <h4>{{eventName}}</h4>
+                    <p class="card-text">{{description}}</p>
+                    <p>{{date}}</p>
+                    <form action="/eventos/participar/{{id}}" method="POST">
+                        <input type="submit" value="Participar" class="btn btn-outline-success">
+                    </form>
+                    <hr>
+                    <br>
+                    {{#if ../isPresident}}
+                    <a href="/eventos/editar/{{id}}" class="btn btn-outline-dark">Editar</a>
+
+                    <form action="/eventos/eliminar/{{id}}" method="POST" style="display: inline">
+                        <input type="submit" value="Eliminar" class="btn btn-danger">
+                    </form>
+                    {{/if}}
+                    {{#if ../isManager}}
+                    <a href="/eventos/editar/{{id}}" class="btn btn-outline-dark">Editar</a>
+
+                    <form action="/eventos/eliminar/{{id}}" method="POST" style="display: inline">
+                        <input type="submit" value="Eliminar" class="btn btn-danger">
+                    </form>
+                    {{/if}}
+
+                </div>
+
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
