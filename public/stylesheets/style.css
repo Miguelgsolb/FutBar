@@ -35,7 +35,7 @@ span a {
 span a:before,
 span a:after {
     position: absolute;
-    content: "LETS GO";
+    content: "¡GOOOOL!";
     height: 55px;
     width: 180px;
     display: flex;

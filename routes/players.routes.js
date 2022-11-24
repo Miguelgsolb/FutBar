@@ -25,21 +25,14 @@ router.get("/detalle/:squad_id/:player_id", (req, res, next) => {
     api
         .getPlayersByTeam(squad_id)
         .then(response => {
+
             const { player } = response.data
-
-            const player_details = player.filter((onePlayer) => {
-                return player_id === onePlayer.id
-
-            })
+            const player_details = player.filter(onePlayer => player_id === onePlayer.id)
 
             res.render('players/players-details', player_details[0])
         })
         .catch(error => next(error))
 
 })
-
-
-
-
 
 module.exports = router

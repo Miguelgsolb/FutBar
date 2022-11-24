@@ -15,10 +15,9 @@ module.exports = app => {
     const teamsRoutes = require("./teams.routes")
     app.use("/equipos", teamsRoutes)
 
-
     const playersRoutes = require("./players.routes")
     app.use("/plantilla", playersRoutes)
 
+    const infoRoutes = require("./info.routes")
+    app.use('/resultados', infoRoutes)
 }
-
-const app = require("../app");
