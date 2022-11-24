@@ -1,0 +1,24 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">pos</th>
+            <th scope="col">Puntos</th>
+            <th scope="col">Equipo</th>
+            <th scope="col">Ganados</th>
+            <th scope="col">Empatados</th>
+            <th scope="col">Perdidos</th>
+        </tr>
+    </thead>
+    {{#each table}}
+    <tbody>
+        <tr>
+            <th scope="row">{{pos}}</th>
+            <td>{{points}}</td>
+            <td>{{team}}</td>
+            <td>{{wins}}</td>
+            <td>{{draws}}</td>
+            <td>{{losses}}</td>
+        </tr>
+    </tbody>
+    {{/each}}
+</table>

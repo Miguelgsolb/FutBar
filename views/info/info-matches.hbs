@@ -1,0 +1,23 @@
+<div class="container mt-5">
+    <div class="row mt-5 text-center">
+        {{#each match}}
+        <div class="col-md-3">
+            <div class="card mt-5 shadow-lg p-3 mb-5 bg-body rounded">
+                <div class="card-body">
+                    <h5 class="card-title">{{local}} vs {{visitor}}</h5>
+                    <div class="text-left">
+                        <p class="card-text">({{stadium}})</p>
+                        <p class="card-text">resultado : {{result}}</p>
+                        <p> fecha : {{schedule}}</p>
+                    </div>
+
+                </div>
+                <a href="/eventos" class="btn btn-dark"
+                    class="position-absolute top-90 start-50 translate-middle mb-5">Eventos</a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+</div>
