@@ -110,4 +110,20 @@ router.post('/eliminar/:event_id', (req, res) => {
 
 })
 
+router.get("/detalle/:event_id", (req, res, next) => {
+
+  const { event_id } = req.params
+
+  Event
+    .findById(event_id)
+    .populate('comments')
+    .then(userComments => {
+      res.render('events/eventos-details', userComments)
+    })
+    .catch(error => next(error))
+
+})
+
+
+
 module.exports = router

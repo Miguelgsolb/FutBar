@@ -11,7 +11,6 @@ class teamsApi {
 
 
   getAllTeams = () => {
-
     const params = {
       key: process.env.API_KEY,
       tz: 'Europe/Madrid',

@@ -16,7 +16,12 @@ const eventSchema = new Schema(
     participants: [{
       type: mongoose.Types.ObjectId,
       ref: 'User',
+    }],
+    comments: [{
+      type: mongoose.Types.ObjectId,
+      ref: 'Comments',
     }]
+
   },
   {
     timestamps: true,
