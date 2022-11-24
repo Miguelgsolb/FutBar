@@ -1,105 +1,58 @@
-{{!-- <div class='container'>
-    <div class="row justify-content-left">
-        <div class="col-md-6">
-
-            <h1>hey {{user.username}}</h1>
-            <h1> {{user.role}}</h1>
-
-
-            {{#if isPresident}}
-            <a href="/eventos/crear" class="btn btn-primary"> Crear Evento</a>
-            {{/if}}
-
-            {{#if isManager}}
-            <a href="/eventos/crear" class="btn btn-primary"> Crear Evento</a>
-            {{/if}}
-
-
-            {{#each userEvents}}
-
-            <p>{{name}}</p>
-
-            <a href="/eventos/editar/{{id}}" class="btn btn-dark">Editar</a>
-
-            <form action="/eventos/eliminar/{{id}}" method="POST" style="display: inline">
-                <input type="submit" value="Eliminar" class="btn btn-danger">
-            </form>
-
-            {{/each}}
-
-            <div>
-                {{#each joinEvents}}
-
-                <p>{{name}}</p>
-
-                <form action="/eventos/desapuntar/{{id}}" method="POST" style="display: inline">
-                    <input type="submit" value="desapuntar" class="btn btn-danger">
-                </form>
-
-
-                {{/each}}
-            </div>
-            <hr>
-            <a href="/" class="btn btn-primary">Volver a Inicio</a>
-
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row justify-content-right">
-            <div class="col-md-6">
-                <h1>Mis Eventos</h1>
-            </div>
-        </div>
-
-    </div>
-</div> --}}
-
 <div class="container mt-5">
-    <h1 class="mt-4">Hola, {{user.username}}</h1>
+    <h1>Bienvenido, {{user.username}}</h1>
+    <a href="/" class="btn btn-dark">Volver a Inicio</a>
     <hr>
-    <div class="row text-center mt-4">
+    <div class="row text-center mt-4 d-flex justify-content-around">
         <div class="col">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm">
-                        Perfil
-                        {{#if isPresident}}
-                        <a href="/eventos/crear" class="btn btn-primary"> Crear Evento</a>
-                        {{/if}}
-
-                        {{#if isManager}}
-                        <a href="/eventos/crear" class="btn btn-primary"> Crear Evento</a>
-                        {{/if}}
-
-
-                        {{#each userEvents}}
-                        <p>{{name}}</p>
-
-                        <a href="/eventos/editar/{{id}}" class="btn btn-dark">Editar</a>
-
-                        <form action="/eventos/eliminar/{{id}}" method="POST" style="display: inline">
-                            <input type="submit" value="Eliminar" class="btn btn-danger">
-                        </form>
-                        {{/each}}
+            <h2>Mis Eventos</h2>
+            <br>
+            {{#each joinEvents}}
+            <div class="card mb-3 shadow-lg p-3 mb-5 bg-body rounded" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{imageUrl}}" class="img-fluid rounded-start" alt="{{eventName}}">
                     </div>
-
-                    <div class="col-sm">
-                        Eventos
-                        <div>
-                            {{#each joinEvents}}
-                            <p>{{name}}</p>
-
-                            <form action="/perfil/eliminar/{{id}}" method="POST" style="display: inline">
-                                <input type="submit" value="desapuntar" class="btn btn-danger">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h4 class="card-title">{{name}}</h4>
+                            <p class="card-text">{{description}}</p>
+                            <p>{{date}}</p>
+                            <form action="/eventos/desapuntar/{{id}}" method="POST" style="display: inline">
+                                <input type="submit" value="Desapuntar" class="btn btn-outline-danger">
                             </form>
-
-                            {{/each}}
                         </div>
-                        <hr>
-                        <a href="/" class="btn btn-primary">Volver a Inicio</a>
                     </div>
                 </div>
+            </div>
+            {{/each}}
+        </div>
+
+        <div class="col mt-5 justify-self-end">
+            <div class="card mb-3 shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem; margin-inline: auto;">
+                <img src="{{user.imageUrl}}" class="card-img-top" alt="{{user.name}}">
+                <div class="card-body">
+                    <h4 class="card-text">{{user.username}}</h4>
+                    <p>{{user.email}}</p>
+                </div>
+                {{#if isPresident}}
+                <div>
+                    <a href="/eventos/crear" class="btn btn-dark"> Crear</a>
+                    <a href="/eventos/editar/{{id}}" class="btn btn-outline-dark">Editar</a>
+                    <form action="/eventos/eliminar/{{id}}" method="POST" style="display: inline">
+                        <input type="submit" value="Eliminar" class="btn btn-danger">
+                    </form>
+                </div>
+                {{/if}}
+
+                {{#if isManager}}
+                <div>
+                    <a href="/eventos/crear" class="btn btn-primary"> Crear</a>
+                    <a href="/eventos/editar/{{id}}" class="btn btn-outline-dark">Editar</a>
+                    <form action="/eventos/eliminar/{{id}}" method="POST" style="display: inline">
+                        <input type="submit" value="Eliminar" class="btn btn-danger">
+                    </form>
+                </div>
+                {{/if}}
             </div>
         </div>
     </div>

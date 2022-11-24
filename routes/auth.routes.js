@@ -1,6 +1,7 @@
 const router = require("express").Router()
 const bcrypt = require('bcryptjs')
 const User = require("../models/User.model")
+const uploader = require('./../config/uploader.config')
 const saltRounds = 10
 
 const { isLoggedOut } = require('../middleware/route-guard')
@@ -8,14 +9,14 @@ const { isLoggedOut } = require('../middleware/route-guard')
 
 router.get('/registro', (req, res, next) => res.render('auth/signup'))
 
-router.post('/registro', (req, res, next) => {
+router.post('/registro', uploader.single('imageField'), (req, res, next) => {
 
   const { userPwd } = req.body
 
   bcrypt
     .genSalt(saltRounds)
     .then(salt => bcrypt.hash(userPwd, salt))
-    .then(hashedPassword => User.create({ ...req.body, password: hashedPassword }))
+    .then(hashedPassword => User.create({ ...req.body, imageUrl: req.file.path, password: hashedPassword }))
     .then(createdUser => res.redirect('/iniciar-sesion'))
     .catch(error => next(error))
 })

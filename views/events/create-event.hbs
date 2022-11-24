@@ -1,11 +1,11 @@
 <div class="container">
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-3">
         <div class="col-md-6">
 
             <h1>Crear Evento</h1>
 
-            <form action="/eventos/crear" method="POST">
+            <form action="/eventos/crear" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="name" class="form-label">Nombre</label>
                     <input type="text" class="form-control" id="name" name="name">
@@ -23,11 +23,15 @@
                     <input type="textarea" class="form-control" id="description" name="description">
                 </div>
                 <div class="mb-3">
+                    <label for="imageUrl" class="form-label">Imagen</label>
+                    <input type="file" class="form-control" id="imageUrl" name="imageField">
+                </div>
+                <div class="mb-3">
                     <label for="date" class="form-label">Fecha</label>
                     <input type="date" class="form-control" id="date" name="date">
                 </div>
                 <div class="d-grid">
-                    <button type="submit" class="btn btn-primary">Crear evento</button>
+                    <button type="submit" class="btn btn-dark">Crear evento</button>
                 </div>
 
             </form>
@@ -38,5 +42,5 @@
 
 
 
-    <a href="/" class="btn btn-primary">Volver al inicio</a>
+    <a href="/" class="btn btn-dark">Volver al inicio</a>
 </div>

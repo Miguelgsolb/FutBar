@@ -8,6 +8,7 @@ const eventSchema = new Schema(
     eventName: { type: String },
     description: { type: String },
     date: { type: Date },
+    imageUrl: { type: String },
     owner: {
       type: mongoose.Types.ObjectId,
       ref: 'User'

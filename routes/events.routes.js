@@ -2,7 +2,7 @@ const express = require('express')
 const { isLoggedIn } = require('../middleware/route-guard')
 const router = express.Router()
 const Event = require('./../models/Event.model')
-
+const uploader = require('./../config/uploader.config')
 
 router.get('/', isLoggedIn, (req, res, next) => {
 
@@ -47,7 +47,7 @@ router.post('/desapuntar/:event_id', isLoggedIn, (req, res, next) => {
   Event
     .findByIdAndUpdate(event_id, { $pull: { participants: req.session.currentUser._id } })
     .then(() => {
-      res.redirect('/eventos')
+      res.redirect('/perfil')
     })
     .catch(error => next(error))
 })
@@ -58,13 +58,13 @@ router.get("/crear", isLoggedIn, (req, res, next) => {
 })
 
 
-router.post("/crear", isLoggedIn, (req, res, next) => {
+router.post("/crear", isLoggedIn, uploader.single('imageField'), (req, res, next) => {
 
   const { name, address, eventName, description, date } = req.body
   const { _id: owner } = req.session.currentUser
 
   Event
-    .create({ name, address, eventName, description, date, owner })
+    .create({ name, address, eventName, description, imageUrl: req.file.path, date, owner })
     .then(() => {
       res.redirect('/eventos')
     })

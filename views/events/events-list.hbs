@@ -1,33 +1,11 @@
-{{!-- <h1>Lista de Eventos</h1>
-
-{{#each userEvents}}
-
-<p>{{name}}</p>
-<p>{{date}}</p>
-
-
-<form action="/eventos/participar/{{id}}" method="POST">
-    <input type="submit" value="Participar" class="btn btn-primary">
-</form>
-
-{{#if ../isPresident}}
-<a href="/eventos/editar/{{id}}" class="btn btn-dark">Editar</a>
-
-<form action="/eventos/eliminar/{{id}}" method="POST" style="display: inline">
-    <input type="submit" value="Eliminar" class="btn btn-danger">
-</form>
-{{/if}}
-
-{{/each}} --}}
-
 <div class="container mb-4">
     <h1 class="text-center mt-5">Lista de Eventos</h1>
     <hr>
     <div class="row mt-4 text-center">
         {{#each userEvents}}
         <div class="col-md-3">
-            <div class="card" style="width: 18rem;">
-                <img src="./images/field.jpg" class="card-img-top" alt="...">
+            <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
+                <img src="{{imageUrl}}" class="card-img-top" alt="{{eventName}}">
                 <div class="card-body">
                     <h2 class="card-title">{{name}}</h2>
                     <hr>
@@ -35,7 +13,7 @@
                     <p class="card-text">{{description}}</p>
                     <p>{{date}}</p>
                     <form action="/eventos/participar/{{id}}" method="POST">
-                        <input type="submit" value="Participar" class="btn btn-outline-success">
+                        <input type="submit" value="participar" class="btn btn-outline-success">
                     </form>
                     <hr>
                     <br>
@@ -43,19 +21,20 @@
                     <a href="/eventos/editar/{{id}}" class="btn btn-outline-dark">Editar</a>
 
                     <form action="/eventos/eliminar/{{id}}" method="POST" style="display: inline">
-                        <input type="submit" value="Eliminar" class="btn btn-danger">
+                        <input type="submit" value="eliminar" class="btn btn-danger">
                     </form>
                     {{/if}}
+
+                    {{#if isCurrentUser}}
                     {{#if ../isManager}}
                     <a href="/eventos/editar/{{id}}" class="btn btn-outline-dark">Editar</a>
 
                     <form action="/eventos/eliminar/{{id}}" method="POST" style="display: inline">
-                        <input type="submit" value="Eliminar" class="btn btn-danger">
+                        <input type="submit" value="eliminar" class="btn btn-danger">
                     </form>
                     {{/if}}
-
+                    {{/if}}
                 </div>
-
             </div>
         </div>
         {{/each}}
