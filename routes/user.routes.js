@@ -5,39 +5,7 @@ const { isLoggedIn } = require('../middleware/route-guard')
 
 router.get('/', isLoggedIn, (req, res) => {
 
-  let userEvents
-
-  Event
-    .find({ owner: req.session.currentUser._id })
-    .populate('participants')
-    .then(ownedEvents => {
-      userEvents = ownedEvents
-      return Event.find({ participants: { $in: [req.session.currentUser._id] } })
-    })
-    .then((joinEvents) => {
-      console.log(joinEvents)
-      res.render('users/profile', {
-        user: req.session.currentUser,
-        isPresident: req.session.currentUser.role === "PRESIDENT",
-        isManager: req.session.currentUser.role === "MANAGER",
-        userEvents,
-        joinEvents
-
-      })
-
-    })
-    .catch(error => next(error))
-})
-
-
-module.exports = router
-
-
-
-
-/*
-
-const promises = [
+  const promises = [
     Event.find({ owner: req.session.currentUser._id }).populate('participants'),
     Event.find({ participants: { $in: [req.session.currentUser._id] } })
   ]
@@ -55,4 +23,11 @@ const promises = [
     })
     .catch(error => next(error))
 
-    */
+
+})
+
+
+module.exports = router
+
+
+

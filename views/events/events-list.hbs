@@ -1,25 +1,3 @@
-{{!-- <h1>Lista de Eventos</h1>
-
-{{#each userEvents}}
-
-<p>{{name}}</p>
-<p>{{date}}</p>
-
-
-<form action="/eventos/participar/{{id}}" method="POST">
-    <input type="submit" value="Participar" class="btn btn-primary">
-</form>
-
-{{#if ../isPresident}}
-<a href="/eventos/editar/{{id}}" class="btn btn-dark">Editar</a>
-
-<form action="/eventos/eliminar/{{id}}" method="POST" style="display: inline">
-    <input type="submit" value="Eliminar" class="btn btn-danger">
-</form>
-{{/if}}
-
-{{/each}} --}}
-
 <div class="container mb-4">
     <h1 class="text-center mt-5">Lista de Eventos</h1>
     <hr>
@@ -53,7 +31,7 @@
                         <input type="submit" value="Eliminar" class="btn btn-danger">
                     </form>
                     {{/if}}
-
+                    <a href="/eventos/detalle/{{_id}}">see more</a>
                 </div>
 
             </div>

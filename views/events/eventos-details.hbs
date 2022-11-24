@@ -1,0 +1,22 @@
+<div class="col-md-3">
+    <div class="card" style="width: 18rem;">
+        <img src="./images/field.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h2 class="card-title">{{name}}</h2>
+            <hr>
+            <h4>{{eventName}}</h4>
+            <p class="card-text">{{description}}</p>
+            <p>{{date}}</p>
+            <form action="/eventos/participar/{{id}}" method="POST">
+                <input type="submit" value="Participar" class="btn btn-outline-success">
+            </form>
+            <a href="/comentarios/crear/{{id}}">Crear comentario</a>
+            <hr>
+            <br>
+        </div>
+
+        {{#each userComments}}
+        {{description}}
+        {{/each}}
+    </div>
+</div>

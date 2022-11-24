@@ -20,4 +20,7 @@ module.exports = app => {
 
     const infoRoutes = require("./info.routes")
     app.use('/resultados', infoRoutes)
+
+    const commentsRoutes = require('./comments.routes')
+    app.use('/comentarios', commentsRoutes)
 }
