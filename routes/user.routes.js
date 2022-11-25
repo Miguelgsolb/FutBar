@@ -13,6 +13,7 @@ router.get('/', isLoggedIn, (req, res) => {
   Promise
     .all(promises)
     .then(([userEvents, joinEvents]) => {
+      console.log(req.session.currentUser.role)
       res.render('users/profile', {
         user: req.session.currentUser,
         isPresident: req.session.currentUser.role === "PRESIDENT",
