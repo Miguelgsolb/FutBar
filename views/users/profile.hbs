@@ -34,26 +34,47 @@
                     <h4 class="card-text">{{user.username}}</h4>
                     <p>{{user.email}}</p>
                 </div>
-                {{#if isPresident}}
-                <div>
-                    <a href="/eventos/crear" class="btn btn-dark"> Crear</a>
-                    <a href="/eventos/editar/{{id}}" class="btn btn-outline-dark">Editar</a>
-                    <form action="/eventos/eliminar/{{id}}" method="POST" style="display: inline">
-                        <input type="submit" value="Eliminar" class="btn btn-danger">
-                    </form>
-                </div>
-                {{/if}}
+            </div>
+            <div class="row text-center mt-4 d-flex justify-content-around">
+                <div class="col">
+                    {{#each userEvents}}
+                    <h2>Mis Eventos Creados</h2>
+                    <br>
+                    <div class="card mb-3 shadow-lg p-3 mb-5 bg-body rounded" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{imageUrl}}" class="img-fluid rounded-start" alt="{{eventName}}">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{name}}</h4>
+                                    <p class="card-text">{{description}}</p>
+                                    <p>{{date}}</p>
+                                    {{#if ../isPresident}}
+                                    <div>
+                                        <a href="/eventos/crear" class="btn btn-dark"> Crear</a>
+                                        <a href="/eventos/editar/{{id}}" class="btn btn-outline-dark">Editar</a>
+                                        <form action="/eventos/eliminar/{{id}}" method="POST" style="display: inline">
+                                            <input type="submit" value="Eliminar" class="btn btn-danger">
+                                        </form>
+                                    </div>
+                                    {{/if}}
 
-                {{#if isManager}}
-                <div>
-                    <a href="/eventos/crear" class="btn btn-primary"> Crear</a>
-                    <a href="/eventos/editar/{{id}}" class="btn btn-outline-dark">Editar</a>
-                    <form action="/eventos/eliminar/{{id}}" method="POST" style="display: inline">
-                        <input type="submit" value="Eliminar" class="btn btn-danger">
-                    </form>
+                                    {{#if ../isManager}}
+                                    <div>
+                                        <a href="/eventos/crear" class="btn btn-primary"> Crear</a>
+                                        <a href="/eventos/editar/{{id}}" class="btn btn-outline-dark">Editar</a>
+                                        <form action="/eventos/eliminar/{{id}}" method="POST" style="display: inline">
+                                            <input type="submit" value="Eliminar" class="btn btn-danger">
+                                        </form>
+                                    </div>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
                 </div>
-                {{/if}}
             </div>
         </div>
     </div>
-</div>
