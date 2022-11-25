@@ -124,6 +124,11 @@ router.get("/detalle/:event_id", (req, res, next) => {
       }
     })
     .then(userComments => {
+      userComments.comments.forEach(comment => {
+        if (comment.owner._id.toString() === req.session.currentUser._id || req.session.currentUser.role === "PRESIDENT" || req.session.currentUser.role === "MANAGER") {
+          comment.canEdit = true
+        }
+      })
       res.render('events/eventos-details', userComments)
 
     })

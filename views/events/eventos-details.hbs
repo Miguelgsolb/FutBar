@@ -27,11 +27,11 @@
                         <p>{{description}}</p>
                     </blockquote>
                 </div>
-                {{!-- {{#if ../isPresident}} --}}
+                {{#if canEdit}}
                 <form action="/comentarios/borrar/{{id}}" method="POST" style="display:inline">
                     <input type="submit" value="Borrar" class="btn btn-danger">
                 </form>
-                {{!-- {{/if}} --}}
+                {{/if}}
             </div>
             {{/each}}
         </div>
