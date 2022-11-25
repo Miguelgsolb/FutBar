@@ -33,6 +33,16 @@
                 <div class="card-body">
                     <h4 class="card-text">{{user.username}}</h4>
                     <p>{{user.email}}</p>
+                    {{#if isPresident}}
+                    <div>
+                        <a href="/eventos/crear" class="btn btn-dark"> Crear</a>
+                    </div>
+                    {{/if}}
+                    {{#if isManager}}
+                    <div>
+                        <a href="/eventos/crear" class="btn btn-dark"> Crear</a>
+                    </div>
+                    {{/if}}
                 </div>
             </div>
             <div class="row text-center mt-4 d-flex justify-content-around">
